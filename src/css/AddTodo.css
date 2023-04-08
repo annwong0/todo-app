@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root, .add-btn {
+    border-radius: 5px;
+    height: 40px;
+}
+
+.input::placeholder, .add-btn {
+    font-family: 'Montserrat', sans-serif;
+}
