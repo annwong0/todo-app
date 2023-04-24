@@ -1,9 +1,11 @@
 import AddTodo from "./AddTodo";
+import TodoList from "./TodoList";
 
-function ActivePanel() {
+function ActivePanel({createTodo, todoList, updateTodo}) {
     return (
         <div>
-            <AddTodo />
+            <AddTodo createTodo={ createTodo } />
+            <TodoList todoList={todoList} updateTodo={updateTodo}/>
         </div>
     )
 }

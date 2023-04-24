@@ -1,16 +1,19 @@
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import { Box } from '@mui/material';
+import { Checkbox, FormControlLabel, Box } from "@mui/material";
 
-function TodoList() {
+function TodoList({updateTodo, todoList}) {
     return (
-        <Box sx={{ padding: '10px 0'}}>
-            <FormGroup>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
-                <FormControlLabel control={<Checkbox />} label="Disabled" />
-            </FormGroup>
-        </Box>
+        <div>
+            <Box sx={{ padding: '10px 0'}}>
+                {todoList && todoList.map(todo => (
+                    <FormControlLabel 
+                        key={todo.id} 
+                        control={<Checkbox defaultChecked={!todo.active} onChange={event => updateTodo(todo.id)}/>} 
+                        label={todo.text} 
+                        sx={{width: '100%'}}
+                    />
+                ))}
+            </Box>
+        </div>
     )
 }
 

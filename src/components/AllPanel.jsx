@@ -1,11 +1,12 @@
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 
-function AllPanel({todo, handleAddTodo}) {
+function AllPanel({todoList, createTodo, updateTodo}) {
+
     return (
         <div>
-            <AddTodo />
-            <TodoList/>
+            <AddTodo todoList={todoList} createTodo={createTodo}/>
+            <TodoList todoList={todoList} updateTodo={updateTodo}/>
         </div>
     )
 }
