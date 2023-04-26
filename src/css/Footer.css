@@ -7,3 +7,7 @@
     height: 5vh;
     padding: 15px;
 }
+
+a:-webkit-any-link {
+    color: #1976D2;
+}

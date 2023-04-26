@@ -16,3 +16,10 @@
     height: 65vh;
     padding: 15px 5%;
 }
+
+*{
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
