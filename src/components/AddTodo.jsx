@@ -3,8 +3,9 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import "../css/AddTodo.css";
 import { useState } from "react";
+import LoadingButton from "@mui/lab/LoadingButton";
 
-function AddTodo({ createTodo }) {
+function AddTodo({ createTodo, isLoading }) {
   const [todoText, setTodoText] = useState("");
 
   const handleAddButtonClick = () => {
@@ -27,16 +28,22 @@ function AddTodo({ createTodo }) {
           />
         </Grid>
         <Grid item xs={3}>
-          <Button
-            variant="contained"
-            color="primary"
-            disableElevation
-            className="add-btn"
-            sx={{ width: "100%" }}
-            onClick={(event) => handleAddButtonClick()}
-          >
-            Add
-          </Button>
+          {!isLoading ? (
+            <Button
+              variant="contained"
+              color="primary"
+              disableElevation
+              className="add-btn"
+              sx={{ width: "100%" }}
+              onClick={(event) => handleAddButtonClick()}
+            >
+              Add
+            </Button>
+          ) : (
+            <LoadingButton loading variant="outlined">
+              Submit
+            </LoadingButton>
+          )}
         </Grid>
       </Grid>
     </div>
