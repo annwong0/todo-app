@@ -1,9 +1,7 @@
-import { Button } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import "../css/AddTodo.css";
 import { useState } from "react";
+import { Button, Grid, TextField } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
+import "../css/AddTodo.css";
 
 function AddTodo({ createTodo, isLoading }) {
   const [todoText, setTodoText] = useState("");

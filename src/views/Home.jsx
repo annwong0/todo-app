@@ -93,7 +93,6 @@ function Home() {
       message: "The todo is successfully updated",
       severity: "success",
     });
-
     readTodoList();
   };
 
@@ -103,11 +102,24 @@ function Home() {
   const deleteTodo = (id) => {
     // TODO
     console.log(id);
+    setIsLoading(true);
+
+    if (id) {
+      let oldTodoList = JSON.parse(localStorage.getItem("todo"));
+      localStorage.setItem(
+        "todo",
+        JSON.stringify(oldTodoList.filter((todo) => todo.id !== id))
+      );
+    } else {
+      localStorage.removeItem("todo");
+    }
+    setIsLoading(false);
     setToast({
       isOpen: true,
       message: "The todo is successfully deleted",
       severity: "success",
     });
+    readTodoList();
   };
   /**
    * close a toast
@@ -161,15 +173,12 @@ function Home() {
       <Footer />
       <Snackbar
         open={toast.isOpen}
+        onClose={handleToastClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         autoHideDuration={3000}
         sx={{ bottom: "60px !importmant" }}
       >
-        <Alert
-          onClose={handleToastClose}
-          severity={toast.severity}
-          sx={{ width: "100%" }}
-        >
+        <Alert severity={toast.severity} sx={{ width: "100%" }}>
           {toast.message}
         </Alert>
       </Snackbar>
