@@ -1,7 +1,7 @@
 # Todo App
 
 - Solution for a [challenge](https://devchallenges.io/challenges/hH6PbOHBdPm6otzw2De5) from [Devchallenges.io](http://devchallenges.io)
-- [Demo](https://https://devchallenges.io/challenges/hH6PbOHBdPm6otzw2De5)
+- [Demo](https://annwong0.github.io/todo-app/)
 
 ## Table of Contents
 
@@ -13,9 +13,6 @@
 - [Acknowledgements](#acknowledgements)
 
 ## Overview
-
-![screenshot](https://github.com/annwong0/windbnb/blob/master/public/screenshot.png)
-
 ### Built With
 
 - [React](https://reactjs.org/)
