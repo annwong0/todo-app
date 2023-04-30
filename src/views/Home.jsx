@@ -103,15 +103,17 @@ function Home() {
     // TODO
     console.log(id);
     setIsLoading(true);
-
+    let oldTodoList = JSON.parse(localStorage.getItem("todo"));
     if (id) {
-      let oldTodoList = JSON.parse(localStorage.getItem("todo"));
       localStorage.setItem(
         "todo",
         JSON.stringify(oldTodoList.filter((todo) => todo.id !== id))
       );
     } else {
-      localStorage.removeItem("todo");
+      localStorage.setItem(
+        "todo",
+        JSON.stringify(oldTodoList.filter((todo) => todo.active === true))
+      );
     }
     setIsLoading(false);
     setToast({
@@ -127,10 +129,6 @@ function Home() {
   const handleToastClose = () => {
     setToast({ isOpen: false, message: "", severity: "" });
   };
-
-  useEffect(() => {
-    console.log(todoList);
-  }, [todoList]);
 
   return (
     <div>

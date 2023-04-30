@@ -43,7 +43,7 @@ function TodoList({ updateTodo, deleteTodo, todoList, isDelete }) {
           height: "fit-content",
         }}
       >
-        {todoList &&
+        {todoList ? (
           todoList.map((todo) => (
             <div className="checkbox-container">
               <FormControlLabel
@@ -71,9 +71,14 @@ function TodoList({ updateTodo, deleteTodo, todoList, isDelete }) {
                 </IconButton>
               )}
             </div>
-          ))}
+          ))
+        ) : (
+          <div>
+            <small>There is no any completed todo.</small>
+          </div>
+        )}
       </Box>
-      {isDelete && (
+      {isDelete && todoList.length > 0 && (
         <Box
           sx={{
             display: "flex",
