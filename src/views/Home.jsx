@@ -45,25 +45,33 @@ function Home() {
    * @param {String} text
    */
   const createTodo = (text) => {
-    setIsLoading(true);
-    const todoObj = {
-      id: moment().format(),
-      text: text,
-      active: true,
-    };
-    let oldTodoList = JSON.parse(localStorage.getItem("todo"));
-    if (oldTodoList.length > 0) {
-      localStorage.setItem("todo", JSON.stringify([todoObj, ...oldTodoList]));
+    if (text) {
+      setIsLoading(true);
+      const todoObj = {
+        id: moment().format(),
+        text: text,
+        active: true,
+      };
+      let oldTodoList = JSON.parse(localStorage.getItem("todo"));
+      if (oldTodoList.length > 0) {
+        localStorage.setItem("todo", JSON.stringify([todoObj, ...oldTodoList]));
+      } else {
+        localStorage.setItem("todo", JSON.stringify([todoObj]));
+      }
+      setIsLoading(false);
+      setToast({
+        isOpen: true,
+        message: "A todo is successfully created",
+        severity: "success",
+      });
+      readTodoList();
     } else {
-      localStorage.setItem("todo", JSON.stringify([todoObj]));
+      setToast({
+        isOpen: true,
+        message: "Input cannot be empty",
+        severity: "error",
+      });
     }
-    setIsLoading(false);
-    setToast({
-      isOpen: true,
-      message: "A todo is successfully created",
-      severity: "success",
-    });
-    readTodoList();
   };
   /**
    * update a todo
@@ -153,6 +161,7 @@ function Home() {
             <div id="tab-1" hidden={tabValue !== 1} className="content">
               <ActivePanel
                 todoList={todoList.filter((todo) => todo.active === true)}
+                createTodo={createTodo}
                 updateTodo={updateTodo}
                 isLoading={isLoading}
               />
